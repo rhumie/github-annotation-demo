@@ -1,0 +1,17 @@
+name: Emit Annotation Directly
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Emit Error and Warning Annotations
+        run: |
+          echo "::error file=.github/workflows/annotation.yaml,line=16,col=5::Example Error: This is a sample error message for demonstration purposes."
+          echo "::warning file=.github/workflows/annotation.yaml,line=17,col=5::Example Warning: This is a sample warning message for demonstration purposes."
